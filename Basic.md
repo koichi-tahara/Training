@@ -1,7 +1,7 @@
 # ターミナルの基本
 20240627作成
 20261008更新
-## 1. ディレクトリの中身をみたり, ディレクトリ間を移動したりする
+## 1. ファイル・ディレクトリの確認
 ### `ls`コマンド
 現在のディレクトリにあるファイルやディレクトリを表示する
 ```sh
@@ -43,24 +43,29 @@ cd ..
 pwd
 ```
 
-## 2. ファイルやディレクトリを変更する
+## 2. ファイル・ディレクトリの編集
 ### ファイルの中身の確認
 `test.txt`というテキストファイルの中身を表示する
 ```sh
 cat test.txt
 ```
-### 大きなファイルの場合
+#### 大きなファイルの場合
 ```sh
 less test.txt
 ```
 ### ファイルの作成
 `test.txt`という名前で中身が空のファイルを作る
 ```sh
-touch test.html
+touch test.txt
 ```
 `test.txt`という名前で中身が`Hello Goodbye`のファイルを作る
 ```sh
 echo "Hello Goodbye" > test.txt
+```
+### ファイルの編集
+`test.txt`を直接編集
+```sh
+nano test.html
 ```
 ### `mkdir`コマンド
 `test`というディレクトリを作る
@@ -113,3 +118,12 @@ rm -f test.txt
 ```sh
 rm -rf test
 ```
+
+## 3. その他 よく使うコマンド
+|コマンド|機能|使用例|意味|
+|-|-|-|-|
+|`grep`|テキストファイル内を検索|`grep "abc" example.txt`|`example.txt`内の`abc`を含む行だけを出力|
+|`wc`|テキストファイルの文字数をカウント|`wc -l example.txt`|`example.txt`の行数をカウント|
+|`head`/`tail`|テキストファイルの先頭/末尾を表示|`head -5 example.txt`|`example.txt`の冒頭5行だけ表示|
+|`\|`|出力を次のコマンドの入力に渡す|`grep "a" ex.txt \| wc -l`|`ex.txt`内の`a`を含む行数をカウント|
+|`>`|出力をファイルに保存|`echo "Hello" > ex.txt`|"Hello" という出力を`ex.txt`というファイルに保存|
