@@ -1,5 +1,6 @@
 # ターミナルの基本
 20240627作成
+20261008更新
 ## 1. ディレクトリの中身をみたり, ディレクトリ間を移動したりする
 ### `ls`コマンド
 現在のディレクトリにあるファイルやディレクトリを表示する
@@ -36,7 +37,7 @@ cd ~
 ```sh
 cd ..
 ```
-### その他のコマンド
+
 現在のディレクトリのパスを表示する
 ```sh
 pwd
@@ -56,7 +57,7 @@ less test.txt
 `test.txt`という名前で中身が空のファイルを作る
 ```sh
 touch test.html
-```sh
+```
 `test.txt`という名前で中身が`Hello Goodbye`のファイルを作る
 ```sh
 echo "Hello Goodbye" > test.txt
@@ -74,7 +75,7 @@ mkdir -p test1/test2/test3
 `test.html`というファイルを相対パスで`tmp`というディレクトリに移動させる
 ```sh
 mv test.html tmp
-```sh
+```
 `test.html`というファイルを`test2.html`に名前変更する
 ```sh
 mv test.html test2.html
