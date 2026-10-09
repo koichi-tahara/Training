@@ -24,7 +24,7 @@ fastp -i sample01_R1.fastq.gz   -o sample01_R1.clean.fastq.gz \
 > `--trim_front` でdpMIG-Seqプライマー部分の配列を除去
 
 ## 2. マッピング
-[https://github.com/Zoshoku-GH/NIG-SuperComputer/tree/main/Variant_Calling/BWA_Mappin]
+[https://github.com/Zoshoku-GH/NIG-SuperComputer/tree/main/Variant_Calling/BWA_Mapping]
 
 ## 3. GATKによるSNPコール
 [https://github.com/Zoshoku-GH/NIG-SuperComputer/tree/main/Variant_Calling/GATK_Calling]\
