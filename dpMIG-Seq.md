@@ -6,36 +6,55 @@
 ssh ユーザー名@IPアドレス
 ```
 
-## 1. トリミング
+## 1. クオリティチェック
 ### 準備
 ディレクトリを作り、FASTQデータをコピー
 ```sh
-mkdir -p bwa_mapping/bam
+mkdir -p fastp/raw_fastq
+mkdir -p fastp/clean_fastq
+cd fastp
 ```
+### 1.1. FastQC (処理前)
 ```sh
-mkdir fastqc_out
-fastqc sample01_R1.fastq.gz -o output_dir
+mkdir raw_fastq/fastqc_out
+fastqc raw_fastq/sample01_R1.fastq.gz -o raw_fastq/fastqc_out/
 ```
+### 1.2. fastp でリードペアを処理
 ```sh
-fastp -i sample01_R1.fastq.gz   -o sample01_R1.clean.fastq.gz \
-      -I sample01_R2.fastq.gz   -O sample01_R2.clean.fastq.gz \
+fastp -i raw_fastq/sample01_R1.fastq.gz   -o clean_fastq/sample01_R1.clean.fastq.gz \
+      -I raw_fastq/sample01_R2.fastq.gz   -O clean_fastq/sample01_R2.clean.fastq.gz \
       -h sample01_fastp.html \
       --trim_front1 20 --trim_front2 20
 ```
 > [!NOTE]
 > `--trim_front` でdpMIG-Seqプライマー部分の配列を除去
-
-
+```sh
+mkdir raw_fastq/fastqc_out
+fastqc raw_fastq/sample01_R1.fastq.gz -o raw_fastq/fastqc_out
+```
+### 1.1. FastQC (処理後)
+```sh
+mkdir raw_fastq/fastqc_out
+fastqc clean_fastq/${ID}_R1.fastq.gz -o clean_fastq/fastqc_out/
+```
 > [!tip]
 > **多数サンプルの処理**
 > 
 > 1行に1つのサンプル名を書いたテキストファイル `samples.txt` を用意する.
 > ```sh
 > while read ID; do
->   fastp -i ${ID}_R1.fastq.gz   -o ${ID}_R1.clean.fastq.gz \
->         -I ${ID}_R2.fastq.gz   -O ${ID}_R2.clean.fastq.gz \
->         -h ${ID}_fastp.html \
+>   # FastQC (処理前)
+>   fastqc raw_fastq/${ID}_R1.fastq.gz -o raw_fastq/fastqc_out/
+>
+>   # fastp
+>   fastp -i raw_fastq/${ID}_R1.fastq.gz   -o clean_fastq/${ID}_R1.clean.fastq.gz \
+>         -I raw_fastq/${ID}_R2.fastq.gz   -O clean_fastq/${ID}_R2.clean.fastq.gz \
+>         -h clean_fastq/${ID}_fastp.html \
 >         --trim_front1 20 --trim_front2 20
+>
+>   # FastQC (処理後)
+>   fastqc clean_fastq/${ID}_R1.fastq.gz -o clean_fastq/fastqc_out/
+> 
 > done < samples.txt
 > ```
 
