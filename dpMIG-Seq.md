@@ -10,8 +10,7 @@ ssh ユーザー名@IPアドレス
 ### 準備
 ディレクトリを作り、FASTQデータをコピー
 ```sh
-mkdir -p fastp/raw_fastq
-mkdir -p fastp/clean_fastq
+mkdir -p fastp/raw_fastq fastp/clean_fastq
 cd fastp
 ```
 ### 1.1. FastQC (処理前)
@@ -20,21 +19,18 @@ mkdir raw_fastq/fastqc_out
 fastqc raw_fastq/sample01_R1.fastq.gz -o raw_fastq/fastqc_out/
 ```
 ### 1.2. fastp でリードペアを処理
+低クオリティリードやアダプタ配列の除去。\
+dpMIG-Seq の場合は、これに加えて`--trim_front` でプライマー部分の配列を除去する必要がある。
 ```sh
 fastp -i raw_fastq/sample01_R1.fastq.gz   -o clean_fastq/sample01_R1.clean.fastq.gz \
       -I raw_fastq/sample01_R2.fastq.gz   -O clean_fastq/sample01_R2.clean.fastq.gz \
       -h sample01_fastp.html \
       --trim_front1 20 --trim_front2 20
 ```
-> [!NOTE]
-> `--trim_front` でdpMIG-Seqプライマー部分の配列を除去
+
+### 1.3. FastQC (処理後)
 ```sh
-mkdir raw_fastq/fastqc_out
-fastqc raw_fastq/sample01_R1.fastq.gz -o raw_fastq/fastqc_out
-```
-### 1.1. FastQC (処理後)
-```sh
-mkdir raw_fastq/fastqc_out
+mkdir clean_fastq/fastqc_out
 fastqc clean_fastq/${ID}_R1.fastq.gz -o clean_fastq/fastqc_out/
 ```
 > [!tip]
