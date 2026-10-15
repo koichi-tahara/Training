@@ -154,7 +154,7 @@ populations -P gstacks_out \
 ### 3B. GATK
 GATK はSTACKSよりも細かいオプションの設定などが可能だが、\
 全ゲノムシーケンスを前提としたモデルに基づくものも多いので注意が必要。
-[https://github.com/Zoshoku-GH/NIG-SuperComputer/tree/main/Variant_Calling/GATK_Calling]\
+
 [https://github.com/mmatsunami/bioarch-2023/blob/main/Osada/tutorial.md]
 
 ### 4. フィルタリング
