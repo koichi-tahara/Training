@@ -15,8 +15,7 @@ cd fastp
 ```
 ### 1.1. FastQC (処理前)
 ```sh
-mkdir raw_fastq/fastqc_out
-fastqc raw_fastq/sample01_R1.fastq.gz -o raw_fastq/fastqc_out/
+fastqc raw_fastq/sample01_R1.fastq.gz
 ```
 ### 1.2. fastp でリードペアを処理
 低クオリティリードやアダプタ配列の除去。\
@@ -30,8 +29,7 @@ fastp -i raw_fastq/sample01_R1.fastq.gz   -o clean_fastq/sample01_R1.clean.fastq
 
 ### 1.3. FastQC (処理後)
 ```sh
-mkdir clean_fastq/fastqc_out
-fastqc clean_fastq/${ID}_R1.fastq.gz -o clean_fastq/fastqc_out/
+fastqc clean_fastq/${ID}_R1.fastq.gz
 ```
 > [!tip]
 > **多数サンプルの処理**
@@ -40,7 +38,7 @@ fastqc clean_fastq/${ID}_R1.fastq.gz -o clean_fastq/fastqc_out/
 > ```sh
 > while read ID; do
 >   # FastQC (処理前)
->   fastqc raw_fastq/${ID}_R1.fastq.gz -o raw_fastq/fastqc_out/
+>   fastqc raw_fastq/${ID}_R1.fastq.gz
 >
 >   # fastp
 >   fastp -i raw_fastq/${ID}_R1.fastq.gz   -o clean_fastq/${ID}_R1.clean.fastq.gz \
@@ -49,7 +47,7 @@ fastqc clean_fastq/${ID}_R1.fastq.gz -o clean_fastq/fastqc_out/
 >         --trim_front1 20 --trim_front2 20
 >
 >   # FastQC (処理後)
->   fastqc clean_fastq/${ID}_R1.fastq.gz -o clean_fastq/fastqc_out/
+>   fastqc clean_fastq/${ID}_R1.fastq.gz
 > 
 > done < samples.txt
 > ```
