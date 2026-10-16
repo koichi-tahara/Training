@@ -1,8 +1,8 @@
 # ターミナルの基本
 20240627作成\
-20261008更新
+20261016更新
 ## 1. ファイル・ディレクトリの確認
-### `ls`コマンド
+### `ls` コマンド
 現在のディレクトリにあるファイルやディレクトリを表示する
 ```sh
 ls
@@ -22,7 +22,7 @@ ls -a
 ls −lha
 ```
 
-### `cd`コマンド
+### `cd` コマンド
 `test`というディレクトリに移動する
 ```sh
 cd test
@@ -69,7 +69,7 @@ echo "Hello Goodbye" > test.txt
 ```sh
 nano test.html
 ```
-### `mkdir`コマンド
+### `mkdir` コマンド
 `test`というディレクトリを作る
 ```sh
 mkdir test
@@ -78,7 +78,7 @@ mkdir test
 ```sh
 mkdir -p test1/test2/test3
 ```
-### `mv`コマンド
+### `mv` コマンド
 `test.html`というファイルを相対パスで`tmp`というディレクトリに移動させる
 ```sh
 mv test.html tmp
@@ -87,7 +87,7 @@ mv test.html tmp
 ```sh
 mv test.html test2.html
 ```
-### `cp`コマンド
+### `cp` コマンド
 `test.html`を相対パスで`tmp`というディレクトリの中にコピーする
 ```sh
 cp test.html tmp/
@@ -103,6 +103,29 @@ cp −r dir tmp/
 >`scp`: ネットワークごしにファイルをコピーする (`ssh` + `cp` の意)
 >
 >基本的な使い方は`cp`と同じ
+
+### `scp` コマンド
+
+ssh ログイン用とは**別の**ターミナルのウィンドウを立ち上げる.
+
+**基本構文: `scp コピー元のファイル コピー先のディレクトリ`** (コピー元は複数可)
+
+#### ファイルのアップロード
+ローカルディレクトリ内の `test1.txt` というファイルをスパコンにアップロード
+```bash
+scp test1.txt your_account@gw.ddbj.nig.ac.jp:/home/your_account/working
+```
+#### ファイルのダウンロード
+スパコン上の`test2.txt`というファイルをスパコンから現在のディレクトリにダウンロード
+```bash
+scp your_account@gw.ddbj.nig.ac.jp:/home/your_account/test2.txt .
+```
+
+#### ディレクトリのやりとり (`-r`オプション)
+`test3`というディレクトリを中身ごとアップロード
+```bash
+scp -r test3 your_account@gw.ddbj.nig.ac.jp:/home/your_account/working
+```
 ### `rm`コマンド
 `test.txt`というファイルを削除する
 ```sh
