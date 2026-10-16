@@ -100,9 +100,7 @@ cp test.html test2.html
 ```sh
 cp −r dir tmp/
 ```
->`scp`: ネットワークごしにファイルをコピーする (`ssh` + `cp` の意)
->
->基本的な使い方は`cp`と同じ
+
 
 ### `scp` コマンド
 
@@ -111,12 +109,12 @@ ssh ログイン用とは**別の**ターミナルのウィンドウを立ち上
 **基本構文: `scp コピー元のファイル コピー先のディレクトリ`** (コピー元は複数可)
 
 #### ファイルのアップロード
-ローカルディレクトリ内の `test1.txt` というファイルをスパコンにアップロード
+ローカルディレクトリ内の `test1.txt` というファイルをサーバーにアップロード
 ```bash
 scp test1.txt your_account@gw.ddbj.nig.ac.jp:/home/your_account/working
 ```
 #### ファイルのダウンロード
-スパコン上の`test2.txt`というファイルをスパコンから現在のディレクトリにダウンロード
+スパコン上の`test2.txt`というファイルをサーバーから現在のディレクトリにダウンロード
 ```bash
 scp your_account@gw.ddbj.nig.ac.jp:/home/your_account/test2.txt .
 ```
