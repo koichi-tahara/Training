@@ -108,18 +108,18 @@ ssh ログイン用とは**別の**ターミナルのウィンドウを立ち上
 
 **基本構文: `scp コピー元のファイル コピー先のディレクトリ`** (コピー元は複数可)
 
-#### ファイルのアップロード
+#### - ファイルのアップロード
 ローカルディレクトリ内の `test1.txt` というファイルをサーバーにアップロード
 ```bash
 scp test1.txt your_account@gw.ddbj.nig.ac.jp:/home/your_account/working
 ```
-#### ファイルのダウンロード
+#### - ファイルのダウンロード
 スパコン上の`test2.txt`というファイルをサーバーから現在のディレクトリにダウンロード
 ```bash
 scp your_account@gw.ddbj.nig.ac.jp:/home/your_account/test2.txt .
 ```
 
-#### ディレクトリのやりとり (`-r`オプション)
+#### - ディレクトリのやりとり (`-r`オプション)
 `test3`というディレクトリを中身ごとアップロード
 ```bash
 scp -r test3 your_account@gw.ddbj.nig.ac.jp:/home/your_account/working
