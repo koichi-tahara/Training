@@ -99,7 +99,7 @@ PCR duplicates のマーク (`samblaster`) , リファレンス配列に沿っ�
 bwa mem -R "@RG\tID:sample01\tLB:LB\tSM:sample01\tPL:ILLUMINA" \
     Reference.fasta \
     ../fastp/clean_fastq/sample01_R1.clean.fastq.gz \
-    ../fastp/clean_fastq/sample01_R2.clean.fastq.gz
+    ../fastp/clean_fastq/sample01_R2.clean.fastq.gz \
 | samblaster \
 | samtools sort -O BAM -o bam/sample01.bam
 ```
